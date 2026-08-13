@@ -16,10 +16,10 @@ export default function App() {
       <PillNav />
       <ScrollHint />
       <div style={{ position: "relative", height: "500vh" }}>
-        <HeroSubtitle text="AI 编程 · 宇宙探索 · 机器人 · 2025 宜昌冠军" />
+        <HeroSubtitle text="AI 编程 · 宇宙探索 · 机器�?· 2025 宜昌冠军" />
         <SkillsPanel />
         <WorksPreview />
-        <ScrollFloat>{`AI 编程\n小创客`}</ScrollFloat>
+        <ScrollFloat>{`大家好\n我叫骆沐辰`}</ScrollFloat>
         <GlassPanel />
       </div>
     </>
