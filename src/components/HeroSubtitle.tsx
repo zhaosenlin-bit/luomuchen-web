@@ -71,6 +71,40 @@ export default function HeroSubtitle({ text }: HeroSubtitleProps) {
       >
         {text}
       </p>
+      <a
+        href="http://127.0.0.1:8123/index.html"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          display: "inline-block",
+          marginTop: 26,
+          fontSize: 13,
+          fontWeight: 600,
+          letterSpacing: "0.1em",
+          padding: "11px 24px",
+          borderRadius: 999,
+          background: "rgba(91,140,255,0.2)",
+          border: "1px solid rgba(91,140,255,0.5)",
+          color: "#fff",
+          textDecoration: "none",
+          pointerEvents: "auto",
+          backdropFilter: "blur(12px)",
+          WebkitBackdropFilter: "blur(12px)",
+          transition: "background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.background = "rgba(91,140,255,0.4)";
+          e.currentTarget.style.transform = "translateY(-2px)";
+          e.currentTarget.style.boxShadow = "0 10px 30px rgba(91,140,255,0.35)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.background = "rgba(91,140,255,0.2)";
+          e.currentTarget.style.transform = "translateY(0)";
+          e.currentTarget.style.boxShadow = "none";
+        }}
+      >
+        进入我的项目 →
+      </a>
     </div>
   );
 }
