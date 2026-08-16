@@ -10,6 +10,7 @@ interface Work {
   description: string;
   status: string;
   tags: string[];
+  link?: string;
 }
 
 const WORKS: Work[] = [
@@ -20,6 +21,7 @@ const WORKS: Work[] = [
       "一个宇宙探索主题的网站 + 5 阶段闯关游戏。包含 3D 太阳系、行星档案、宇宙影像画廊和完整的游戏流程：收集材料 → 建造火箭 → 飞船对接 → 躲避陨石 → 返回地球。",
     status: "已发布上线",
     tags: ["React", "Vite", "TypeScript", "Three.js", "动效"],
+    link: "http://127.0.0.1:8123/universe.html",
   },
   {
     title: "电教馆信息素养提升活动",
@@ -171,6 +173,37 @@ export default function WorksPreview() {
                   </span>
                 ))}
               </div>
+              {w.link && (
+                <a
+                  href={w.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: "inline-block",
+                    marginTop: 14,
+                    fontSize: 13,
+                    fontWeight: 600,
+                    letterSpacing: "0.05em",
+                    padding: "8px 16px",
+                    borderRadius: 999,
+                    background: "rgba(91,140,255,0.18)",
+                    border: "1px solid rgba(91,140,255,0.45)",
+                    color: "#B9CCFF",
+                    textDecoration: "none",
+                    transition: "background 0.25s ease, transform 0.25s ease",
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = "rgba(91,140,255,0.35)";
+                    e.currentTarget.style.transform = "translateY(-2px)";
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = "rgba(91,140,255,0.18)";
+                    e.currentTarget.style.transform = "translateY(0)";
+                  }}
+                >
+                  进入宇宙探索者 →
+                </a>
+              )}
             </div>
             <div
               style={{
