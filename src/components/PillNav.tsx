@@ -19,6 +19,10 @@ const NAV_ITEMS: NavItem[] = [
     onClick: () => gsap.to(window, { duration: 3, scrollTo: document.body.scrollHeight, ease: "power3.inOut" }),
   },
   { label: "作品" },
+  {
+    label: "相册",
+    onClick: () => gsap.to(window, { duration: 2.5, scrollTo: "#photos", ease: "power3.inOut" }),
+  },
   { label: "联系" },
 ];
 
