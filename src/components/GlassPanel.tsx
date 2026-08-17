@@ -18,6 +18,7 @@ export default function GlassPanel() {
     const container = containerRef.current;
     if (!wrapper || !container) return;
 
+    const vh = window.innerHeight;
     const tween = gsap.fromTo(
       wrapper,
       { y: "100%" },
@@ -25,10 +26,11 @@ export default function GlassPanel() {
         y: "0%",
         ease: "none",
         scrollTrigger: {
-          trigger: container,
-          start: "top bottom",
-          end: "bottom bottom",
+          trigger: document.documentElement,
+          start: () => "+=" + vh * 6.2,
+          end: () => "+=" + vh * 7.2,
           scrub: 1.5,
+          invalidateOnRefresh: true,
         },
       }
     );

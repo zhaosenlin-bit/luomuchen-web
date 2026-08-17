@@ -55,20 +55,22 @@ export default function WorksPreview() {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+    const vh = window.innerHeight;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: document.documentElement,
-        start: "+=3000 top",
-        end: "+=4500 top",
+        start: () => "+=" + vh * 4.4,
+        end: () => "+=" + vh * 6.4,
         scrub: 1,
+        invalidateOnRefresh: true,
       },
     });
     tl.fromTo(
       el,
       { opacity: 0, y: 80 },
-      { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }
+      { opacity: 1, y: 0, duration: 0.12, ease: "power2.out" }
     )
-      .to(el, { opacity: 1, duration: 0.6 }, 0.2)
+      .to(el, { opacity: 1, duration: 0.68 }, 0.12)
       .to(el, { opacity: 0, y: -40, duration: 0.2, ease: "power2.in" }, 0.8);
     return () => {
       tl.scrollTrigger?.kill();

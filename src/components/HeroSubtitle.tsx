@@ -19,21 +19,23 @@ export default function HeroSubtitle({ text }: HeroSubtitleProps) {
     const el = ref.current;
     if (!el) return;
 
+    const vh = window.innerHeight;
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: document.documentElement,
-        start: "+=300 top",
-        end: "+=1500 top",
+        start: () => "+=" + vh * 0.8,
+        end: () => "+=" + vh * 2.4,
         scrub: 1,
+        invalidateOnRefresh: true,
       },
     });
 
     tl.fromTo(
       el,
       { opacity: 0, y: 30 },
-      { opacity: 1, y: 0, duration: 0.2, ease: "power2.out" }
+      { opacity: 1, y: 0, duration: 0.15, ease: "power2.out" }
     )
-      .to(el, { opacity: 1, duration: 0.6 }, 0.2)
+      .to(el, { opacity: 1, duration: 0.65 }, 0.15)
       .to(el, { opacity: 0, y: -20, duration: 0.2, ease: "power2.in" }, 0.8);
 
     return () => {

@@ -29,7 +29,7 @@ export default function ScrollFloat({ children }: ScrollFloatProps) {
         scrollTrigger: {
           trigger: document.body,
           start: "top top",
-          end: "+=1000",
+          end: () => "+=" + window.innerHeight * 1.2,
           scrub: 1.5,
         },
       }
