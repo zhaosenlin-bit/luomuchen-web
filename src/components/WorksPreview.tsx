@@ -22,7 +22,7 @@ const WORKS: Work[] = [
       "一个宇宙探索主题的网站 + 5 阶段闯关游戏。包含 3D 太阳系、行星档案、宇宙影像画廊和完整的游戏流程：收集材料 → 建造火箭 → 飞船对接 → 躲避陨石 → 返回地球。",
     status: "已发布上线",
     tags: ["React", "Vite", "TypeScript", "Three.js", "动效"],
-    link: "http://127.0.0.1:8123/universe.html",
+    link: "https://zhaosenlin-bit.github.io/luomuchen-web/",
     linkText: "进入宇宙探索者 →",
   },
   {
@@ -32,7 +32,7 @@ const WORKS: Work[] = [
       "参加心理健康与科技方向的展示项目。把科技用在让人更舒服的事情上——这是我一直在想的。",
     status: "进行中",
     tags: ["项目策划", "讲解", "调研"],
-    link: "http://127.0.0.1:8123/index.html",
+    link: "https://zhaosenlin-bit.github.io/luomuchen-web/",
     linkText: "进入项目 →",
   },
   {
