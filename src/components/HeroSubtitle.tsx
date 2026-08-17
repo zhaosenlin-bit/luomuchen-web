@@ -20,6 +20,8 @@ export default function HeroSubtitle({ text }: HeroSubtitleProps) {
     if (!el) return;
 
     const vh = window.innerHeight;
+    // 默认隐藏,离开滚动范围立即消失,避免和技能面板重叠
+    el.style.visibility = "hidden";
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: document.documentElement,
@@ -38,9 +40,25 @@ export default function HeroSubtitle({ text }: HeroSubtitleProps) {
       .to(el, { opacity: 1, duration: 0.65 }, 0.15)
       .to(el, { opacity: 0, y: -20, duration: 0.2, ease: "power2.in" }, 0.8);
 
+    // 非 scrub 触发器:进入面板范围立即可见,离开立即隐藏(无延迟)
+    const showTrigger = ScrollTrigger.create({
+      trigger: document.documentElement,
+      start: () => "+=" + vh * 0.8,
+      end: () => "+=" + vh * 0.8001,
+      onEnter: () => { el.style.visibility = "visible"; },
+      onLeaveBack: () => { el.style.visibility = "hidden"; },
+    });
+    const hideTrigger = ScrollTrigger.create({
+      trigger: document.documentElement,
+      start: () => "+=" + vh * 2.4,
+      onEnter: () => { el.style.visibility = "hidden"; },
+      onLeaveBack: () => { el.style.visibility = "visible"; },
+    });
     return () => {
       tl.scrollTrigger?.kill();
       tl.kill();
+      showTrigger.kill();
+      hideTrigger.kill();
     };
   }, []);
 

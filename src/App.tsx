@@ -16,7 +16,7 @@ export default function App() {
       <BrandBadge />
       <PillNav />
       <ScrollHint />
-      <div style={{ position: "relative", height: "750vh" }}>
+      <div style={{ position: "relative", height: "800vh" }}>
         <HeroSubtitle text="AI 编程 · 宇宙探索 · 机器人 · 2025 宜昌冠军" />
         <SkillsPanel />
         <WorksPreview />

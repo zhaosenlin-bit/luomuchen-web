@@ -28,7 +28,7 @@ export default function GlassPanel() {
         scrollTrigger: {
           trigger: document.documentElement,
           start: () => "+=" + vh * 6.5,
-          end: () => "+=" + vh * 7.5,
+          end: () => "+=" + vh * 8.0,
           scrub: 1.5,
           invalidateOnRefresh: true,
         },

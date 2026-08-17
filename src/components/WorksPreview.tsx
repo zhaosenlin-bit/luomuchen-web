@@ -56,11 +56,13 @@ export default function WorksPreview() {
     const el = ref.current;
     if (!el) return;
     const vh = window.innerHeight;
+    // 默认隐藏,离开滚动范围立即消失,避免和相册重叠
+    el.style.visibility = "hidden";
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: document.documentElement,
         start: () => "+=" + vh * 4.4,
-        end: () => "+=" + vh * 6.4,
+        end: () => "+=" + vh * 6.0,
         scrub: 1,
         invalidateOnRefresh: true,
       },
@@ -72,9 +74,25 @@ export default function WorksPreview() {
     )
       .to(el, { opacity: 1, duration: 0.68 }, 0.12)
       .to(el, { opacity: 0, y: -40, duration: 0.2, ease: "power2.in" }, 0.8);
+    // 非 scrub 触发器:进入面板范围立即可见,离开立即隐藏(无延迟)
+    const showTrigger = ScrollTrigger.create({
+      trigger: document.documentElement,
+      start: () => "+=" + vh * 4.4,
+      end: () => "+=" + vh * 4.4001,
+      onEnter: () => { el.style.visibility = "visible"; },
+      onLeaveBack: () => { el.style.visibility = "hidden"; },
+    });
+    const hideTrigger = ScrollTrigger.create({
+      trigger: document.documentElement,
+      start: () => "+=" + vh * 6.0,
+      onEnter: () => { el.style.visibility = "hidden"; },
+      onLeaveBack: () => { el.style.visibility = "visible"; },
+    });
     return () => {
       tl.scrollTrigger?.kill();
       tl.kill();
+      showTrigger.kill();
+      hideTrigger.kill();
     };
   }, []);
 
